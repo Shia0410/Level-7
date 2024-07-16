@@ -9,6 +9,8 @@ No need to have another step for `npm i`.
 
 Removed intial migrations, added my migrations afterwards.
 
+Used bootstrap as front end framework.
+
 | Key           | Value        |
 | ------------- | ------------ |
 | Host          | 127.0.0.1    |
