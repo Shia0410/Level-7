@@ -22,7 +22,7 @@ class ItemController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
+            'description' => 'required',
         ]);
 
         Item::create($request->all());
@@ -45,7 +45,7 @@ class ItemController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'nullable',
+            'description' => 'required',
         ]);
 
         $item->update($request->all());
