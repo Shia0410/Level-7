@@ -61,6 +61,7 @@ interface Item {
 
 export default defineComponent({
   setup() {
+    const api_url = 'http://localhost:8000/api/items/'
     const dialog = ref(false)
     const items = ref<Item[]>([])
     const editedIndex = ref(-1)
@@ -84,7 +85,7 @@ export default defineComponent({
     })
 
     async function initialize() {
-      const response = await axios.get<Item[]>('http://localhost:8000/api/items')
+      const response = await axios.get<Item[]>(api_url)
       items.value = response.data
     }
 
@@ -97,7 +98,7 @@ export default defineComponent({
     async function deleteItem(item: Item) {
       const index = items.value.indexOf(item)
       if (confirm('Are you sure you want to delete this item?')) {
-        await axios.delete(`http://localhost:8000/api/items/${item.id}`)
+        await axios.delete(api_url+item.id)
         items.value.splice(index, 1)
       }
     }
@@ -110,10 +111,10 @@ export default defineComponent({
 
     async function save() {
       if (editedIndex.value > -1) {
-        await axios.put(`http://localhost:8000/api/items/${editedItem.value.id}`, editedItem.value)
+        await axios.put(api_url+editedItem.value.id, editedItem.value)
         Object.assign(items.value[editedIndex.value], editedItem.value)
       } else {
-        const response = await axios.post<Item>('http://localhost:8000/api/items', editedItem.value)
+        const response = await axios.post<Item>(api_url, editedItem.value)
         items.value.push(response.data)
       }
       close()
