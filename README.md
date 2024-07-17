@@ -33,8 +33,8 @@ Implemented crud, did not make a specific commit.
 
 Open two terminals
 
-1. Run `php artisan serve`
-2. In the second terminal run `npm run dev`
+1. Navigate to [backend](./medium/backend/) Run `php artisan serve`
+2. Navigate to [frontend](./medium/frontend/) In the second terminal run `npm run dev`
 
 Please update the database credentials with your new database.
 Please reference the [.env file](./medium/backend/.env) - Line 11 - 16
